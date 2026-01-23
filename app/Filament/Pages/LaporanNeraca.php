@@ -187,34 +187,6 @@ class LaporanNeraca extends Page implements HasForms
         return $neraca;
     }
 
-    // Function removed - using template format with zero values only
-
-
-    // private function calculateSaldoRekening($rekeningId, $transaksis): float
-    // {
-    //     $saldo = 0;
-
-    //     foreach ($transaksis as $transaksi) {
-    //         // Check if this transaction affects this rekening
-    //         if (
-    //             $transaksi->rekening == $rekeningId ||
-    //             str_contains($transaksi->kode ?? '', (string)$rekeningId)
-    //         ) {
-
-    //             foreach ($transaksi->detailTransaksi as $detail) {
-    //                 // Add logic based on transaction type (debit/credit)
-    //                 if ($transaksi->jenis == 'masuk') {
-    //                     $saldo += $detail->jumlah;
-    //                 } else {
-    //                     $saldo -= $detail->jumlah;
-    //                 }
-    //             }
-    //         }
-    //     }
-
-    //     return $saldo;
-    // }
-
     public function exportToPdf()
     {
         // Generate data neraca

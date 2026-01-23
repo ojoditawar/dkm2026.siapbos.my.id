@@ -172,13 +172,13 @@ class DkmPanelProvider extends PanelProvider
                             ]),
                         NavigationGroup::make('Laporan Keuangan')
                             ->items([
-                                NavigationItem::make('Laporan Neraca')
-                                    ->icon('heroicon-o-document-chart-bar')
-                                    ->url(fn(): string => LaporanNeraca::getUrl()),
+                                // NavigationItem::make('Laporan Neraca')
+                                //     ->icon('heroicon-o-document-chart-bar')
+                                //     ->url(fn(): string => LaporanNeraca::getUrl()),
                                 NavigationItem::make('Laporan Buku Besar')
                                     ->icon('heroicon-o-book-open')
                                     ->url(fn(): string => LaporanBukuBesar::getUrl()),
-                                NavigationItem::make('Laporan Neraca Transaksi')
+                                NavigationItem::make('Laporan Neraca Masjid')
                                     ->icon('heroicon-o-document-chart-bar')
                                     ->url(fn(): string => LaporanNeracaTransaksi::getUrl()),
                             ]),

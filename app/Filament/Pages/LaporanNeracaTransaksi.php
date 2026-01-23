@@ -60,16 +60,16 @@ class LaporanNeracaTransaksi extends Page implements HasForms
                     ->label('Tanggal Akhir')
                     ->required()
                     ->reactive(),
-                Radio::make('status')
-                    ->inline()
-                    ->options([
-                        'realisasi' => 'Realisasi',
-                        'rekening' => 'Rekening',
-                    ])
-                    ->descriptions([
-                        'realisasi' => 'Neraca Berdasarkan Transaksi',
-                        'rekening' => 'Format Neraca Berdasarkan Akun',
-                    ])
+                // Radio::make('status')
+                //     ->inline()
+                //     ->options([
+                //         'realisasi' => 'Realisasi',
+                //         'rekening' => 'Rekening',
+                //     ])
+                //     ->descriptions([
+                //         'realisasi' => 'Neraca Berdasarkan Transaksi',
+                //         'rekening' => 'Format Neraca Berdasarkan Akun',
+                //     ])
             ]);
     }
 
