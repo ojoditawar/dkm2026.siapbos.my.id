@@ -1,3 +1,21 @@
 https://filamentphp.com/plugins/codewithdennis-lucide-icons
 composer require webbingbrasil/filament-copyactions
 https://www.youtube.com/playlist?list=PLPqeNG7ba3a_Sz3tJ1YukfqHE5jZGBmHn  // belajar awal laravel 12
+
+# 1) cek perubahan
+git status
+
+# 2) ambil update terbaru dari GitHub (amanin konflik)
+git pull --rebase
+
+# 3) stage perubahan (pilih salah satu)
+git add .              # semua perubahan
+# git add path/file     # kalau mau file tertentu
+
+# 4) commit
+git commit -m "Update project"
+
+# 5) push ke GitHub (branch utama biasanya main atau master)
+git push origin main
+# atau: git push origin master
+
