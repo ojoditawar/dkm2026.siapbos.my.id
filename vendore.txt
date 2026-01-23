@@ -1,0 +1,3 @@
+https://filamentphp.com/plugins/codewithdennis-lucide-icons
+composer require webbingbrasil/filament-copyactions
+https://www.youtube.com/playlist?list=PLPqeNG7ba3a_Sz3tJ1YukfqHE5jZGBmHn  // belajar awal laravel 12

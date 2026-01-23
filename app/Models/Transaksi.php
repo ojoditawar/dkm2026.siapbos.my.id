@@ -1,0 +1,45 @@
+<?php
+
+namespace App\Models;
+
+use Illuminate\Database\Eloquent\Model;
+
+class Transaksi extends Model
+{
+    protected $fillable = [
+        'user_id',
+        'masjid_id',
+        'tahun',
+        'no_trans',
+        'tanggal',
+        'jenis',
+        'bayar',
+        'rekening',
+        'kode',
+    ];
+
+    protected $casts = [
+        'tanggal' => 'date',
+    ];
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
+
+    public function masjid()
+    {
+        return $this->belongsTo(Masjid::class);
+    }
+
+    public function detailTransaksi()
+    {
+        return $this->hasMany(detailTransaksi::class);
+    }
+
+
+    // public function tahun()
+    // {
+    //     return $this->belongsTo(Tahun::class);
+    // }
+}

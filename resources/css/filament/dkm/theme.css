@@ -1,0 +1,50 @@
+@import '../../../../vendor/filament/filament/resources/css/theme.css';
+
+@source '../../../../app/Filament/**/*';
+@source '../../../../resources/views/filament/**/*';
+@source '../../../../vendor/diogogpinto/filament-auth-ui-enhancer/resources/**/*.blade.php';
+
+/* Dark mode fixes for form fields */
+.dark .fi-input {
+    @apply bg-gray-800 border-gray-600 text-gray-100;
+}
+
+.dark .fi-input:focus {
+    @apply border-primary-500 ring-primary-500;
+}
+
+.dark .fi-select-input {
+    @apply bg-gray-800 border-gray-600 text-gray-100;
+}
+
+.dark .fi-select-input:focus {
+    @apply border-primary-500 ring-primary-500;
+}
+
+.dark .fi-fo-field-wrp-label {
+    @apply text-black;
+}
+
+.dark .fi-fo-field-label-content {
+    @apply text-black;
+}
+
+.dark .fi-fo-placeholder {
+    @apply text-gray-400;
+}
+
+.dark input[type="date"] {
+    @apply bg-gray-800 border-gray-600 text-gray-100;
+}
+
+.dark input[type="date"]:focus {
+    @apply border-primary-500 ring-primary-500;
+}
+
+.dark select {
+    @apply bg-gray-800 border-gray-600 text-gray-100;
+}
+
+.dark select:focus {
+    @apply border-primary-500 ring-primary-500;
+}
