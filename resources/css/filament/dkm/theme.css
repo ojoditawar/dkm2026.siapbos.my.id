@@ -48,3 +48,15 @@
 .dark select:focus {
     @apply border-primary-500 ring-primary-500;
 }
+
+.dark .fi-fo-field-label-content {
+    @apply text-black;
+}
+
+.dark .fi-grid-col {
+    @apply text-black;
+}
+.dark .fi-fo-radio-label-text {  
+    @apply text-red-500;
+}
+ 

@@ -2,7 +2,7 @@
     <div class="space-y-6">
         <!-- Filter Form -->
         <div class="bg-white rounded-lg shadow p-6">
-            <h3 class="text-lg font-medium text-gray-900 mb-4">Filter Laporan</h3>
+            <h3 class="text-lg font-medium text-gray-900 mb-4">Filter LaporanE</h3>
             {{ $this->form }}
         </div>
 
