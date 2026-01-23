@@ -7,13 +7,10 @@ use App\Livewire\Settings\TwoFactor;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Artisan;
 use Laravel\Fortify\Features;
-use App\Http\Controllers\Level1PrintController;
-use App\Http\Controllers\Level2PrintController;
-use App\Http\Controllers\Level3PrintController;
 use App\Http\Controllers\BuktiPrintController;
 use App\Http\Controllers\SaldoAwalPrintController;
 use App\Http\Controllers\SalurZakatPrintController;
-use App\Http\Controllers\AnggaranPrintController;
+// use App\Http\Controllers\AnggaranPrintController;
 use App\Http\Controllers\PaguPrintController;
 use App\Http\Controllers\LaporanNeracaPdfController;
 use App\Http\Controllers\LaporanBukuBesarPdfController;
@@ -24,15 +21,6 @@ Route::get('/', function () {
     return view('welcome');
 })->name('home');
 
-// Route::get('/level1/print', [Level1PrintController::class, 'show'])
-//     ->name('level1.print');
-
-// Route::get('/level2/print', [Level2PrintController::class, 'show'])
-//     ->name('level2.print');
-
-// Route::get('/level3/print', [Level3PrintController::class, 'show'])
-//     ->name('level3.print');
-
 Route::get('/bukti/{bukti}/print', [BuktiPrintController::class, 'show'])
     ->name('buktis.print');
 
@@ -42,8 +30,8 @@ Route::get('/saldoawal/print', [SaldoAwalPrintController::class, 'print'])
 Route::get('/salur-zakat/print/{id}', [SalurZakatPrintController::class, 'print'])
     ->name('salur-zakat.print');
 
-Route::get('/anggaran/print', [AnggaranPrintController::class, 'print'])
-    ->name('anggaran.print');
+// Route::get('/anggaran/print', [AnggaranPrintController::class, 'print'])
+//     ->name('anggaran.print');
 
 Route::get('/pagu/print', [PaguPrintController::class, 'print'])
     ->name('pagu.print');
