@@ -19,10 +19,13 @@ use Barryvdh\DomPDF\Facade\Pdf;
 use Coolsam\Flatpickr\Forms\Components\Flatpickr;
 use Filament\Forms\Components\Radio;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Gate;
+use BezhanSalleh\FilamentShield\Traits\HasPageShield;
 
 class LaporanNeracaTransaksi extends Page implements HasForms
 {
     use InteractsWithForms;
+    use HasPageShield;
 
     protected static string|\BackedEnum|null $navigationIcon = 'heroicon-o-document-chart-bar';
     protected string $view = 'filament.pages.laporan-neraca';
@@ -30,6 +33,11 @@ class LaporanNeracaTransaksi extends Page implements HasForms
     protected static ?string $title = 'Laporan Neraca Transaksi (Balance Sheet)';
     protected static string|\UnitEnum|null $navigationGroup = 'Laporan Keuangan';
     protected static ?int $navigationSort = 2;
+
+    public static function canViewAny(): bool
+    {
+        return Gate::allows('viewAny', static::class);
+    }
 
     public $tanggal_mulai;
     public $tanggal_akhir;

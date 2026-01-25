@@ -18,6 +18,7 @@ use App\Models\Masjid;
 use Illuminate\Support\Facades\DB;
 use Filament\Notifications\Notification;
 use Coolsam\Flatpickr\Forms\Components\Flatpickr;
+use Illuminate\Support\Facades\Gate;
 
 class LaporanBukuBesar extends Page implements HasForms
 {
@@ -29,6 +30,11 @@ class LaporanBukuBesar extends Page implements HasForms
     protected static ?string $title = 'Laporan Buku Besar (General Ledger)';
     protected static string|\UnitEnum|null $navigationGroup = 'Laporan Keuangan';
     protected static ?int $navigationSort = 2;
+
+    public static function canViewAny(): bool
+    {
+        return Gate::allows('viewAny', static::class);
+    }
 
     public $tanggal_mulai;
     public $tanggal_akhir;

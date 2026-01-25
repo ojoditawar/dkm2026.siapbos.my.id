@@ -9,21 +9,21 @@ use Filament\Actions\Action;
 use Filament\Forms\Contracts\HasForms;
 use Filament\Forms\Concerns\InteractsWithForms;
 use Filament\Schemas\Schema;
-// use Filament\Support\Icons\Heroicon;
 use App\Models\Rekening;
 use App\Models\Buku;
 use App\Models\Transaksi;
 use App\Models\detailTransaksi;
 use App\Models\Masjid;
-// use Illuminate\Support\Facades\DB;
 use Filament\Notifications\Notification;
 use Barryvdh\DomPDF\Facade\Pdf;
 use Coolsam\Flatpickr\Forms\Components\Flatpickr;
 use Filament\Forms\Components\Radio;
+use BezhanSalleh\FilamentShield\Traits\HasPageShield;
 
 class LaporanNeraca extends Page implements HasForms
 {
     use InteractsWithForms;
+    use HasPageShield;
 
     protected static string|\BackedEnum|null $navigationIcon = 'heroicon-o-document-chart-bar';
     protected string $view = 'filament.pages.laporan-neraca';

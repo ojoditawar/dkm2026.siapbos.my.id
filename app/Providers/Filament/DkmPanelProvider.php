@@ -128,14 +128,14 @@ class DkmPanelProvider extends PanelProvider
                             ->label('Kelola User')
                             ->items([
                                 ...(UserResource::canViewAny() ? UserResource::getNavigationItems() : []),
-                                ...RekResource::getNavigationItems(),
-                                ...SubRekResource::getNavigationItems(),
-                                ...RekeningResource::getNavigationItems(),
+                                ...(RekResource::canViewAny() ? RekResource::getNavigationItems() : []),
+                                ...(SubRekResource::canViewAny() ? SubRekResource::getNavigationItems() : []),
+                                ...(RekeningResource::canViewAny() ? RekeningResource::getNavigationItems() : []),
                             ]),
                         NavigationGroup::make('Modul Bendahara')
                             ->label('Modul Bendahara')
                             ->items([
-                                ...TransaksiResource::getNavigationItems(),
+                                ...(TransaksiResource::canViewAny() ? TransaksiResource::getNavigationItems() : []),
 
                                 // ...SaldoAwalResource::getNavigationItems(),
                                 // ...BuktiResource::getNavigationItems(),
@@ -148,20 +148,23 @@ class DkmPanelProvider extends PanelProvider
                                 // ...SalurZakatResource::getNavigationItems(),
                             ]),
                         NavigationGroup::make('Laporan Keuangan')
-                            ->items([
-                                // NavigationItem::make('Laporan Neraca')
-                                //     ->icon('heroicon-o-document-chart-bar')
-                                //     ->url(fn(): string => LaporanNeraca::getUrl()),
+                            ->items(array_filter([
+                                NavigationItem::make('Laporan Neraca')
+                                    ->icon('heroicon-o-document-chart-bar')
+                                    ->url(fn(): string => LaporanNeracaTransaksi::getUrl()),
                                 NavigationItem::make('Laporan Buku Besar')
                                     ->icon('heroicon-o-book-open')
                                     ->url(fn(): string => LaporanBukuBesar::getUrl()),
-                                NavigationItem::make('Laporan Neraca Masjid')
-                                    ->icon('heroicon-o-document-chart-bar')
-                                    ->url(fn(): string => LaporanNeracaTransaksi::getUrl()),
-                            ]),
+                                // ...(LaporanBukuBesar::canViewAny() ? [NavigationItem::make('Laporan Buku Besar')
+                                //     ->icon('heroicon-o-book-open')
+                                //     ->url(fn(): string => LaporanBukuBesar::getUrl())] : []),
+                                // ...(LaporanNeracaTransaksi::canViewAny() ? [NavigationItem::make('Laporan Neraca Masjid')
+                                //     ->icon('heroicon-o-document-chart-bar')
+                                //     ->url(fn(): string => LaporanNeracaTransaksi::getUrl())] : []),
+                            ])),
                         NavigationGroup::make('Role & Permission')
                             ->items([
-                                ...RoleResource::getNavigationItems(),
+                                ...(RoleResource::canViewAny() ? RoleResource::getNavigationItems() : []),
                                 // ...PermissionResoure::getNavigationItems(),
                             ]),
 
