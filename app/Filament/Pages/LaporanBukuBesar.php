@@ -53,6 +53,7 @@ class LaporanBukuBesar extends Page implements HasForms
                     ->required()
                     ->reactive(),
                 Select::make('rekening_id')
+                    ->multiple()
                     ->label('Rekening')
                     ->options(Rekening::query()
                         // ->selectRaw("id, CONCAT(akun, ' - ', nama) as display")
@@ -170,7 +171,7 @@ class LaporanBukuBesar extends Page implements HasForms
         // Get rekening list
         $rekeningQuery = Rekening::query();
         if ($this->rekening_id) {
-            $rekeningQuery->where('id', $this->rekening_id);
+            $rekeningQuery->whereIn('id', (array) $this->rekening_id);
         }
         // dd($rekeningQuery->get());
 

@@ -4,6 +4,7 @@ namespace App\Providers\Filament;
 
 use Filament\Http\Middleware\Authenticate;
 use BezhanSalleh\FilamentShield\FilamentShieldPlugin;
+use Illuminate\Support\Facades\Auth;
 use function Filament\Support\original_request;
 use Filament\Http\Middleware\AuthenticateSession;
 use Filament\Http\Middleware\DisableBladeIconComponents;
@@ -37,22 +38,7 @@ use Illuminate\Session\Middleware\StartSession;
 use Illuminate\View\Middleware\ShareErrorsFromSession;
 use App\Filament\Resources\Users\UserResource;
 use App\Http\Controllers\LaporanNeracaTransaksiPdfController;
-// use App\Filament\Resources\Jamaahs\JamaahResource;
-// use App\Filament\Resources\Penguruses\PengurusResource;
-// use App\Filament\Resources\Anggarans\AnggaranResource;
-// use App\Filament\Resources\Asnafs\AsnafResource;
-// use App\Filament\Resources\Buktis\BuktiResource;
-// use App\Filament\Resources\DetilAsnafs\DetilAsnafResource;
-// use App\Filament\Resources\Level1s\Level1Resource;
-// use App\Filament\Resources\Level2s\Level2Resource;
-// use App\Filament\Resources\Mutasis\MutasiResource;
-// use App\Filament\Resources\Pagus\PaguResource;
-// use App\Filament\Resources\SaldoAwals\SaldoAwalResource;
-// use App\Filament\Resources\SalurZakats\SalurZakatResource;
-// use App\Filament\Resources\Strukturs\StrukturResource;
-// use App\Filament\Resources\SumberDanas\SumberDanaResource;
-// use App\Filament\Resources\Tahuns\TahunResource;
-// use App\Filament\Resources\Tugas\TugasResource;
+
 use BezhanSalleh\FilamentShield\Resources\Roles\RoleResource;
 use Filament\Enums\GlobalSearchPosition;
 use Filament\Support\Enums\Width;
@@ -129,28 +115,19 @@ class DkmPanelProvider extends PanelProvider
                             ->collapsed()
                             ->items([
                                 // Urutan: Tahun dulu (setting dasar), lalu User
-                                ...TahunResource::getNavigationItems(),
-                                ...UserResource::getNavigationItems(),
-                                ...MasjidResource::getNavigationItems(),
-                                ...AkunResource::getNavigationItems(),
-                                ...KelompokResource::getNavigationItems(),
-                                // ...PengurusResource::getNavigationItems(),
-                                // ...TugasResource::getNavigationItems(),
-                                // ...Level1Resource::getNavigationItems(),
-                                // ...Level2Resource::getNavigationItems(),
-                                // ...SumberDanaResource::getNavigationItems(),
-                                // ...JamaahResource::getNavigationItems(),
+                                ...(TahunResource::canViewAny() ? TahunResource::getNavigationItems() : []),
+                                ...(MasjidResource::canViewAny() ? MasjidResource::getNavigationItems() : []),
+
                             ]),
                         NavigationGroup::make('Modul Anggaran')
                             ->label('Kelola Anggaran')
                             ->items([
-                                // ...AnggaranResource::getNavigationItems(),
-                                ...PaguResource::getNavigationItems(),
+                                ...(PaguResource::canViewAny() ? PaguResource::getNavigationItems() : []),
                             ]),
                         NavigationGroup::make('Modul User')
                             ->label('Kelola User')
                             ->items([
-                                ...UserResource::getNavigationItems(),
+                                ...(UserResource::canViewAny() ? UserResource::getNavigationItems() : []),
                                 ...RekResource::getNavigationItems(),
                                 ...SubRekResource::getNavigationItems(),
                                 ...RekeningResource::getNavigationItems(),

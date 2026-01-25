@@ -33,4 +33,8 @@ class Masjid extends Model
             }
         });
     }
+    public function bendaharas()
+    {
+        return $this->hasMany(Bendahara::class);
+    }
 }

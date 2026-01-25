@@ -14,10 +14,10 @@ class TransaksisTable
     {
         return $table
             ->columns([
-                TextColumn::make('user_id')
-                    ->numeric()
-                    ->sortable(),
-                TextColumn::make('masjid_id'),
+                // TextColumn::make('user_id')
+                //     ->numeric()
+                //     ->sortable(),
+                // TextColumn::make('masjid_id'),
                 TextColumn::make('no_trans')
                     ->searchable(),
                 TextColumn::make('tanggal')
@@ -29,7 +29,7 @@ class TransaksisTable
                     ->searchable(),
                 TextColumn::make('rekening')
                     ->searchable(),
-                TextColumn::make('kode')
+                TextColumn::make('detailTransaksi.uraian')->label('Uraian')
                     ->searchable(),
                 TextColumn::make('created_at')
                     ->dateTime()
