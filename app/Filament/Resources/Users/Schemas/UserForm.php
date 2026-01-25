@@ -28,11 +28,26 @@ class UserForm
                     ->multiple()
                     ->preload()
                     ->searchable(),
-                Select::make('masjid')
+                Select::make('masjid_id')
                     ->relationship('masjid', 'nama')
-                    // ->multiple()
                     ->preload()
-                    ->searchable(),
+                    ->searchable()
+                    ->live()
+                    ->afterStateUpdated(fn(callable $set) => $set('bendahara_id', null)),
+                Select::make('bendahara_id')
+                    ->relationship(
+                        name: 'bendahara',
+                        titleAttribute: 'nama',
+                        modifyQueryUsing: fn($query, callable $get) =>
+                        $query->when(
+                            $get('masjid_id'),
+                            fn($q, $masjidId) =>
+                            $q->where('masjid_id', $masjidId)
+                        )
+                    )
+                    ->preload()
+                    ->searchable()
+                    ->disabled(fn(callable $get) => !$get('masjid_id')),
                 // DateTimePicker::make('email_verified_at'),
                 // Textarea::make('two_factor_secret')
                 //     ->columnSpanFull(),

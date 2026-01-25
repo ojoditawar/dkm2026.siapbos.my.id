@@ -25,6 +25,7 @@ class User extends Authenticatable
         'email',
         'password',
         'masjid_id',
+        'bendahara_id',
     ];
 
     /**
@@ -67,5 +68,10 @@ class User extends Authenticatable
     public function masjid()
     {
         return $this->belongsTo(Masjid::class);
+    }
+
+    public function bendahara()
+    {
+        return $this->belongsTo(Bendahara::class);
     }
 }

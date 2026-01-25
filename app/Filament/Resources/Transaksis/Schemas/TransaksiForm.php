@@ -57,8 +57,7 @@ class TransaksiForm
                                 return \App\Models\Masjid::first()?->id;
                             }),
                         TextInput::make('no_trans')
-                            // ->default(fn() => 'TRX-' . now()->format('YmdHis') . '-' . str_pad(rand(0, 999), 3, '0', STR_PAD_LEFT))
-                            ->default(fn() => 'TRX-' . str_pad(rand(0, 999), 3, '0', STR_PAD_LEFT))
+                            ->default(fn() => \App\Models\Transaksi::generateNoTransaksi(Auth::id()))
                             ->disabled()
                             ->dehydrated()
                             ->required(),

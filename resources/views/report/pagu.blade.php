@@ -113,9 +113,9 @@
             <tr>
                 <th style="width: 5%">No</th>
                 <th style="width: 50%">Uraian</th>
-                <th style="width: 20%">Alokasi Pagu</th>
-                <th style="width: 35%">Alokasi Tahun Lalu</th>
-                <th style="width: 10%">Bertambah/Berkurang</th>
+                <th style="width: 20%">Anggaran Tahun Ini</th>
+                <th style="width: 20%">Anggaran Tahun Lalu</th>
+                <th style="width: 5%">Bertambah/Berkurang</th>
             </tr>
         </thead>
         <tbody>
@@ -193,12 +193,12 @@
             @foreach($pagu->paguDetils as $detail)
             <tr style="font-size: 10px; color: #666;">
                 <td></td>
-                <td class="detail-row" style="padding-left: 20px;">
+                <td class="detail-row" style="padding-left: 10px;">
                     - {{ $detail->uraian_detail }}
                     ({{ $detail->jumlah }} × {{ $detail->frek }} {{ $detail->satuan }} × Rp {{
                         number_format($detail->harga, 0, ',', '.') }})
                 </td>
-                <td class="text-right">{{ number_format($detail->total, 0, ',', '.') }}</td>
+                <td class="text-right" style="padding-right: 5px;">{{ number_format($detail->total, 0, ',', '.') }}</td>
                 <td class="text-right">0</td>
                 <td class="text-right">0</td>
             </tr>
@@ -211,12 +211,12 @@
 
             <tr class="grand-total">
                 <td colspan="2" class="text-center"><strong>Surplus Defisit Anggaran</strong></td>
-                <td class="text-right"><strong>
+                <td class="text-right" style="padding-right: 0px;"><strong>
                         @if($grandTotal < 0) ({{ number_format(abs($grandTotal), 0, ',' , '.' ) }}) @else {{
                             number_format($grandTotal, 0, ',' , '.' ) }} @endif </strong>
                 </td>
-                <td class="text-right"><strong>0</strong></td>
-                <td class="text-right"><strong>0</strong></td>
+                <td class="text-right" style="padding-right: 5px;"><strong>0</strong></td>
+                <td class="text-right" style="padding-right: 5px;"><strong>0</strong></td>
             </tr>
         </tbody>
     </table>
