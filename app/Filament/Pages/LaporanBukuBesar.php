@@ -19,6 +19,7 @@ use Illuminate\Support\Facades\DB;
 use Filament\Notifications\Notification;
 use Coolsam\Flatpickr\Forms\Components\Flatpickr;
 use Illuminate\Support\Facades\Gate;
+use Illuminate\Support\Facades\Auth;
 
 class LaporanBukuBesar extends Page implements HasForms
 {
@@ -151,6 +152,9 @@ class LaporanBukuBesar extends Page implements HasForms
             })
             ->whereBetween('transaksis.tanggal', [$this->tanggal_mulai, $this->tanggal_akhir])
             ->where('transaksis.masjid_id', $this->masjid_id)
+            ->when(!Auth::user()?->hasRole('super_admin'), function ($query) {
+                return $query->where('transaksis.user_id', Auth::id());
+            })
             ->select(
                 'transaksis.no_trans',
                 'transaksis.tanggal',
@@ -160,9 +164,14 @@ class LaporanBukuBesar extends Page implements HasForms
                 'mapping_rekenings.jurnal',
                 'mapping_rekenings.kolom',
                 'transaksis.jenis',
-                'transaksis.bayar'
+                'transaksis.bayar',
+                'transaksis.id as transaksi_id',
+                'transaksis.user_id'
             )
-            ->whereBetween('transaksis.tanggal', [$this->tanggal_mulai, $this->tanggal_akhir]);
+            ->whereBetween('transaksis.tanggal', [$this->tanggal_mulai, $this->tanggal_akhir])
+            ->orderBy('transaksis.tanggal')
+            ->orderBy('transaksis.id')
+            ->orderBy('transaksis.user_id');
 
         // dd($query->get()); //ada
 
