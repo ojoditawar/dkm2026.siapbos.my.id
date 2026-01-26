@@ -45,7 +45,7 @@ class Dashboard extends BaseDashboard
                 ->icon('heroicon-o-trash'),
 
             Action::make('optimizeApp')
-                ->label('⚡ Optimize App')
+                ->label('⚡ Optimize App OK Bos')
                 ->color('success')
                 ->requiresConfirmation()
                 ->modalHeading('Optimize Application')
