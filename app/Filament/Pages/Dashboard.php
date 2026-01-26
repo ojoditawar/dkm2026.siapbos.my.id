@@ -14,7 +14,7 @@ class Dashboard extends BaseDashboard
     {
         return [
             Action::make('clearCache')
-                ->label('🗑️ Clear Cache')
+                ->label('🗑️ Clear Cache XXX')
                 ->color('warning')
                 ->requiresConfirmation()
                 ->modalHeading('Clear Application Cache')
