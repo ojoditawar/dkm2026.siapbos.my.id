@@ -113,3 +113,12 @@ Route::get('/laporan-buku-besar-pdf', [LaporanBukuBesarPdfController::class, 'ge
 Route::get('/laporan-neraca-transaksi-pdf', [LaporanNeracaTransaksiPdfController::class, 'export'])
     ->middleware('auth')
     ->name('laporan.neraca-transaksi.pdf');
+
+Route::get('/finance/summary', function () {
+    return response()->json([
+        'periode' => 'Jan–Jun 2026',
+        'labels' => ['Jan', 'Feb', 'Mar', 'Apr', 'Mei', 'Jun'],
+        'anggaran' => [15000000, 15000000, 15000000, 15000000, 15000000, 15000000],
+        'realisasi' => [12000000, 9000000, 14800000, 11000000, 13200000, 15900000],
+    ]);
+});
