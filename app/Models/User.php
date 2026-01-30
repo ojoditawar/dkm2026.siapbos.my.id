@@ -9,7 +9,11 @@ use Illuminate\Notifications\Notifiable;
 use Illuminate\Support\Str;
 use Laravel\Fortify\TwoFactorAuthenticatable;
 use Spatie\Permission\Traits\HasRoles;
+use Filament\Models\Contracts\FilamentUser;
+use Illuminate\Database\Eloquent\Model;
+use Filament\Panel;
 
+// class User extends Authenticatable implements FilamentUser
 class User extends Authenticatable
 {
     /** @use HasFactory<\Database\Factories\UserFactory> */
