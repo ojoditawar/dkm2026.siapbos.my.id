@@ -101,75 +101,75 @@ class DkmPanelProvider extends PanelProvider
             ->maxContentWidth(Width::Full)
             ->sidebarCollapsibleOnDesktop()
             // ->topbar(false)
-            ->globalSearch(position: GlobalSearchPosition::Sidebar);
-        // ->navigation(function (NavigationBuilder $builder): NavigationBuilder {
-        //     return $builder
-        //         ->items([
-        //             NavigationItem::make('Dashboard')
-        //                 ->icon('heroicon-o-home')
-        //                 ->isActiveWhen(fn(): bool => original_request()->routeIs('filament.admin.pages.dashboard'))
-        //                 ->url(fn(): string => Dashboard::getUrl()),
-        //         ])
-        //         ->groups([
-        //             NavigationGroup::make('Modul Admin')
-        //                 ->collapsed()
-        //                 ->items([
-        //                     // Urutan: Tahun dulu (setting dasar), lalu User
-        //                     ...(TahunResource::canViewAny() ? TahunResource::getNavigationItems() : []),
-        //                     ...(MasjidResource::canViewAny() ? MasjidResource::getNavigationItems() : []),
+            ->globalSearch(position: GlobalSearchPosition::Sidebar)
+            ->navigation(function (NavigationBuilder $builder): NavigationBuilder {
+                return $builder
+                    ->items([
+                        NavigationItem::make('Dashboard')
+                            ->icon('heroicon-o-home')
+                            ->isActiveWhen(fn(): bool => original_request()->routeIs('filament.admin.pages.dashboard'))
+                            ->url(fn(): string => Dashboard::getUrl()),
+                    ])
+                    ->groups([
+                        NavigationGroup::make('Modul Admin')
+                            ->collapsed()
+                            ->items([
+                                // Urutan: Tahun dulu (setting dasar), lalu User
+                                ...(TahunResource::canViewAny() ? TahunResource::getNavigationItems() : []),
+                                ...(MasjidResource::canViewAny() ? MasjidResource::getNavigationItems() : []),
 
-        //                 ]),
-        //             NavigationGroup::make('Modul Anggaran')
-        //                 ->label('Kelola Anggaran')
-        //                 ->items([
-        //                     ...(PaguResource::canViewAny() ? PaguResource::getNavigationItems() : []),
-        //                 ]),
-        //             NavigationGroup::make('Modul User')
-        //                 ->label('Kelola User')
-        //                 ->items([
-        //                     ...(UserResource::canViewAny() ? UserResource::getNavigationItems() : []),
-        //                     ...(RekResource::canViewAny() ? RekResource::getNavigationItems() : []),
-        //                     ...(SubRekResource::canViewAny() ? SubRekResource::getNavigationItems() : []),
-        //                     ...(RekeningResource::canViewAny() ? RekeningResource::getNavigationItems() : []),
-        //                 ]),
-        //             NavigationGroup::make('Modul Bendahara')
-        //                 ->label('Modul Bendahara')
-        //                 ->items([
-        //                     ...(TransaksiResource::canViewAny() ? TransaksiResource::getNavigationItems() : []),
+                            ]),
+                        NavigationGroup::make('Modul Anggaran')
+                            ->label('Kelola Anggaran')
+                            ->items([
+                                ...(PaguResource::canViewAny() ? PaguResource::getNavigationItems() : []),
+                            ]),
+                        NavigationGroup::make('Modul User')
+                            ->label('Kelola User')
+                            ->items([
+                                ...(UserResource::canViewAny() ? UserResource::getNavigationItems() : []),
+                                ...(RekResource::canViewAny() ? RekResource::getNavigationItems() : []),
+                                ...(SubRekResource::canViewAny() ? SubRekResource::getNavigationItems() : []),
+                                ...(RekeningResource::canViewAny() ? RekeningResource::getNavigationItems() : []),
+                            ]),
+                        NavigationGroup::make('Modul Bendahara')
+                            ->label('Modul Bendahara')
+                            ->items([
+                                ...(TransaksiResource::canViewAny() ? TransaksiResource::getNavigationItems() : []),
 
-        //                     // ...SaldoAwalResource::getNavigationItems(),
-        //                     // ...BuktiResource::getNavigationItems(),
-        //                     // ...MutasiResource::getNavigationItems(),
-        //                 ]),
-        //             NavigationGroup::make('Modul ZIS')
-        //                 ->items([
-        //                     // ...AsnafResource::getNavigationItems(),
-        //                     // ...DetilAsnafResource::getNavigationItems(),
-        //                     // ...SalurZakatResource::getNavigationItems(),
-        //                 ]),
-        //             NavigationGroup::make('Laporan Keuangan')
-        //                 ->items(array_filter([
-        //                     NavigationItem::make('Laporan Neraca')
-        //                         ->icon('heroicon-o-document-chart-bar')
-        //                         ->url(fn(): string => LaporanNeracaTransaksi::getUrl()),
-        //                     NavigationItem::make('Laporan Buku Besar')
-        //                         ->icon('heroicon-o-book-open')
-        //                         ->url(fn(): string => LaporanBukuBesar::getUrl()),
-        //                     // ...(LaporanBukuBesar::canViewAny() ? [NavigationItem::make('Laporan Buku Besar')
-        //                     //     ->icon('heroicon-o-book-open')
-        //                     //     ->url(fn(): string => LaporanBukuBesar::getUrl())] : []),
-        //                     // ...(LaporanNeracaTransaksi::canViewAny() ? [NavigationItem::make('Laporan Neraca Masjid')
-        //                     //     ->icon('heroicon-o-document-chart-bar')
-        //                     //     ->url(fn(): string => LaporanNeracaTransaksi::getUrl())] : []),
-        //                 ])),
-        //             NavigationGroup::make('Role & Permission')
-        //                 ->items([
-        //                     ...(RoleResource::canViewAny() ? RoleResource::getNavigationItems() : []),
-        //                     // ...PermissionResoure::getNavigationItems(),
-        //                 ]),
+                                // ...SaldoAwalResource::getNavigationItems(),
+                                // ...BuktiResource::getNavigationItems(),
+                                // ...MutasiResource::getNavigationItems(),
+                            ]),
+                        NavigationGroup::make('Modul ZIS')
+                            ->items([
+                                // ...AsnafResource::getNavigationItems(),
+                                // ...DetilAsnafResource::getNavigationItems(),
+                                // ...SalurZakatResource::getNavigationItems(),
+                            ]),
+                        NavigationGroup::make('Laporan Keuangan')
+                            ->items(array_filter([
+                                NavigationItem::make('Laporan Neraca')
+                                    ->icon('heroicon-o-document-chart-bar')
+                                    ->url(fn(): string => LaporanNeracaTransaksi::getUrl()),
+                                NavigationItem::make('Laporan Buku Besar')
+                                    ->icon('heroicon-o-book-open')
+                                    ->url(fn(): string => LaporanBukuBesar::getUrl()),
+                                // ...(LaporanBukuBesar::canViewAny() ? [NavigationItem::make('Laporan Buku Besar')
+                                //     ->icon('heroicon-o-book-open')
+                                //     ->url(fn(): string => LaporanBukuBesar::getUrl())] : []),
+                                // ...(LaporanNeracaTransaksi::canViewAny() ? [NavigationItem::make('Laporan Neraca Masjid')
+                                //     ->icon('heroicon-o-document-chart-bar')
+                                //     ->url(fn(): string => LaporanNeracaTransaksi::getUrl())] : []),
+                            ])),
+                        NavigationGroup::make('Role & Permission')
+                            ->items([
+                                ...(RoleResource::canViewAny() ? RoleResource::getNavigationItems() : []),
+                                // ...PermissionResoure::getNavigationItems(),
+                            ]),
 
-        //         ]);
-        // });
+                    ]);
+            });
     }
 }
 
