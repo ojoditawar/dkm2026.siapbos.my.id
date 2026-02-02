@@ -23,7 +23,8 @@ class TahunResource extends Resource
 
     protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedRectangleStack;
 
-    // protected static ?string $navigationGroup = 'Management Admin';
+    protected static string|\UnitEnum|null $navigationGroup = 'Master';
+    protected static ?int $navigationSort = 2;
 
     protected static ?string $recordTitleAttribute = 'tahun';
 

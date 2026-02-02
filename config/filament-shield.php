@@ -204,8 +204,8 @@ return [
         'exclude' => [
             \Filament\Pages\Dashboard::class,
 
-            \App\Filament\Pages\LaporanBukuBesar::class,
-            \App\Filament\Pages\LaporanNeracaTransaksi::class,
+            // \App\Filament\Pages\LaporanBukuBesar::class,
+            // \App\Filament\Pages\LaporanNeracaTransaksi::class,
         ],
     ],
 

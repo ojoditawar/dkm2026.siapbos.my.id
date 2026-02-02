@@ -57,6 +57,7 @@ class LaporanNeracaTransaksi extends Page implements HasForms
             ->components([
                 Select::make('masjid_id')
                     ->label('Masjid')
+                    // ->labelExtraAttributes(['class' => 'dark:text-black'])
                     ->options(Masjid::pluck('nama', 'id'))
                     ->required()
                     ->reactive(),

@@ -18,6 +18,7 @@ use App\Models\Masjid;
 use Illuminate\Support\Facades\DB;
 use Filament\Notifications\Notification;
 use Coolsam\Flatpickr\Forms\Components\Flatpickr;
+use Filament\Schemas\Components\Section;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Auth;
 
@@ -54,31 +55,34 @@ class LaporanBukuBesar extends Page implements HasForms
     {
         return $schema
             ->components([
-                Select::make('masjid_id')
-                    ->label('Masjid')
-                    ->options(Masjid::pluck('nama', 'id'))
-                    ->required()
-                    ->reactive(),
-                Select::make('rekening_id')
-                    ->multiple()
-                    ->label('Rekening')
-                    ->options(Rekening::query()
-                        // ->selectRaw("id, CONCAT(akun, ' - ', nama) as display")
-                        // ->pluck('display', 'id'))
-                        ->selectRaw("id, nama")
-                        ->pluck('nama', 'id'))
-                    ->searchable()
-                    ->placeholder('Pilih rekening atau kosongkan untuk semua rekening'),
-                Flatpickr::make('tanggal_mulai')
-                    ->required()
-                    ->time(false)
-                    ->date(true)
-                    ->reactive(),
-                Flatpickr::make('tanggal_akhir')
-                    ->required()
-                    ->time(false)
-                    ->date(true)
-                    ->reactive(),
+                Section::make()
+                    ->schema([
+                        Select::make('masjid_id')
+                            ->options(Masjid::pluck('nama', 'id'))
+                            ->required()
+                            ->reactive(),
+                        Select::make('rekening_id')
+                            ->multiple()
+                            ->label('Rekening')
+                            ->options(Rekening::query()
+                                // ->selectRaw("id, CONCAT(akun, ' - ', nama) as display")
+                                // ->pluck('display', 'id'))
+                                ->selectRaw("id, nama")
+                                ->pluck('nama', 'id'))
+                            ->searchable()
+                            ->placeholder('Pilih rekening atau kosongkan untuk semua rekening'),
+                        Flatpickr::make('tanggal_mulai')
+                            ->required()
+                            ->time(false)
+                            ->date(true)
+                            ->reactive(),
+                        Flatpickr::make('tanggal_akhir')
+                            ->required()
+                            ->time(false)
+                            ->date(true)
+                            ->reactive(),
+                    ])
+                    ->columns(2),
             ]);
     }
 
