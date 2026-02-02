@@ -37,34 +37,4 @@ class TahunPolicy
         return $authUser->can('Delete:Tahun');
     }
 
-    public function restore(AuthUser $authUser, Tahun $tahun): bool
-    {
-        return $authUser->can('Restore:Tahun');
-    }
-
-    public function forceDelete(AuthUser $authUser, Tahun $tahun): bool
-    {
-        return $authUser->can('ForceDelete:Tahun');
-    }
-
-    public function forceDeleteAny(AuthUser $authUser): bool
-    {
-        return $authUser->can('ForceDeleteAny:Tahun');
-    }
-
-    public function restoreAny(AuthUser $authUser): bool
-    {
-        return $authUser->can('RestoreAny:Tahun');
-    }
-
-    public function replicate(AuthUser $authUser, Tahun $tahun): bool
-    {
-        return $authUser->can('Replicate:Tahun');
-    }
-
-    public function reorder(AuthUser $authUser): bool
-    {
-        return $authUser->can('Reorder:Tahun');
-    }
-
 }

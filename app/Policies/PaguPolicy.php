@@ -37,34 +37,4 @@ class PaguPolicy
         return $authUser->can('Delete:Pagu');
     }
 
-    public function restore(AuthUser $authUser, Pagu $pagu): bool
-    {
-        return $authUser->can('Restore:Pagu');
-    }
-
-    public function forceDelete(AuthUser $authUser, Pagu $pagu): bool
-    {
-        return $authUser->can('ForceDelete:Pagu');
-    }
-
-    public function forceDeleteAny(AuthUser $authUser): bool
-    {
-        return $authUser->can('ForceDeleteAny:Pagu');
-    }
-
-    public function restoreAny(AuthUser $authUser): bool
-    {
-        return $authUser->can('RestoreAny:Pagu');
-    }
-
-    public function replicate(AuthUser $authUser, Pagu $pagu): bool
-    {
-        return $authUser->can('Replicate:Pagu');
-    }
-
-    public function reorder(AuthUser $authUser): bool
-    {
-        return $authUser->can('Reorder:Pagu');
-    }
-
 }

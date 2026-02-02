@@ -122,8 +122,17 @@ return [
         'merge' => true,
         'generate' => true,
         'methods' => [
-            'viewAny', 'view', 'create', 'update', 'delete', 'restore',
-            'forceDelete', 'forceDeleteAny', 'restoreAny', 'replicate', 'reorder',
+            'viewAny',
+            'view',
+            'create',
+            'update',
+            'delete',
+            // 'restore',
+            // 'forceDelete',
+            // 'forceDeleteAny',
+            // 'restoreAny',
+            // 'replicate',
+            // 'reorder',
         ],
         'single_parameter_methods' => [
             'viewAny',
@@ -194,6 +203,9 @@ return [
         'prefix' => 'view',
         'exclude' => [
             \Filament\Pages\Dashboard::class,
+
+            \App\Filament\Pages\LaporanBukuBesar::class,
+            \App\Filament\Pages\LaporanNeracaTransaksi::class,
         ],
     ],
 

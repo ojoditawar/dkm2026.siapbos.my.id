@@ -37,34 +37,4 @@ class RekPolicy
         return $authUser->can('Delete:Rek');
     }
 
-    public function restore(AuthUser $authUser, Rek $rek): bool
-    {
-        return $authUser->can('Restore:Rek');
-    }
-
-    public function forceDelete(AuthUser $authUser, Rek $rek): bool
-    {
-        return $authUser->can('ForceDelete:Rek');
-    }
-
-    public function forceDeleteAny(AuthUser $authUser): bool
-    {
-        return $authUser->can('ForceDeleteAny:Rek');
-    }
-
-    public function restoreAny(AuthUser $authUser): bool
-    {
-        return $authUser->can('RestoreAny:Rek');
-    }
-
-    public function replicate(AuthUser $authUser, Rek $rek): bool
-    {
-        return $authUser->can('Replicate:Rek');
-    }
-
-    public function reorder(AuthUser $authUser): bool
-    {
-        return $authUser->can('Reorder:Rek');
-    }
-
 }

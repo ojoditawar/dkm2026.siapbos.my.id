@@ -37,34 +37,4 @@ class TransaksiPolicy
         return $authUser->can('Delete:Transaksi');
     }
 
-    public function restore(AuthUser $authUser, Transaksi $transaksi): bool
-    {
-        return $authUser->can('Restore:Transaksi');
-    }
-
-    public function forceDelete(AuthUser $authUser, Transaksi $transaksi): bool
-    {
-        return $authUser->can('ForceDelete:Transaksi');
-    }
-
-    public function forceDeleteAny(AuthUser $authUser): bool
-    {
-        return $authUser->can('ForceDeleteAny:Transaksi');
-    }
-
-    public function restoreAny(AuthUser $authUser): bool
-    {
-        return $authUser->can('RestoreAny:Transaksi');
-    }
-
-    public function replicate(AuthUser $authUser, Transaksi $transaksi): bool
-    {
-        return $authUser->can('Replicate:Transaksi');
-    }
-
-    public function reorder(AuthUser $authUser): bool
-    {
-        return $authUser->can('Reorder:Transaksi');
-    }
-
 }

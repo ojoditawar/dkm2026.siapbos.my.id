@@ -37,34 +37,4 @@ class RekeningPolicy
         return $authUser->can('Delete:Rekening');
     }
 
-    public function restore(AuthUser $authUser, Rekening $rekening): bool
-    {
-        return $authUser->can('Restore:Rekening');
-    }
-
-    public function forceDelete(AuthUser $authUser, Rekening $rekening): bool
-    {
-        return $authUser->can('ForceDelete:Rekening');
-    }
-
-    public function forceDeleteAny(AuthUser $authUser): bool
-    {
-        return $authUser->can('ForceDeleteAny:Rekening');
-    }
-
-    public function restoreAny(AuthUser $authUser): bool
-    {
-        return $authUser->can('RestoreAny:Rekening');
-    }
-
-    public function replicate(AuthUser $authUser, Rekening $rekening): bool
-    {
-        return $authUser->can('Replicate:Rekening');
-    }
-
-    public function reorder(AuthUser $authUser): bool
-    {
-        return $authUser->can('Reorder:Rekening');
-    }
-
 }
